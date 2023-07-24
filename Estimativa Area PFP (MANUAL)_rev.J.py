@@ -165,6 +165,7 @@ if True:
     count = 0
     ctf_dict = {}
     for i in range(2, number_lines + 1):
+        print(f'Current line: {i}')
         type_item = sheet.cell(row=i, column=type_column).value
         length = sheet.cell(row=i, column=length_column).value
         nps1 = sheet.cell(row=i, column=nps1_column).value
@@ -175,7 +176,8 @@ if True:
             if nps1 > 12:
                 do1 = nps1 * 0.0254
             else:
-                do1 = nps_diameter_inch_dict[nps1] * 0.0254
+                d01 = nps_diameter_inch_dict.get(nps1, nps1) * 0.0254
+                # do1 = nps_diameter_inch_dict[nps1] * 0.0254
         else:
             do1 = 0
         ro1 = do1 / 2
@@ -184,7 +186,8 @@ if True:
             if nps2 > 12:
                 do2 = nps2 * 0.0254
             else:
-                do2 = nps_diameter_inch_dict[nps2] * 0.0254
+                d02 = nps_diameter_inch_dict.get(nps2, nps2) * 0.0254
+                # do2 = nps_diameter_inch_dict[nps2] * 0.0254
         else:
             do2 = 0
         rating = sheet.cell(row=i, column=rating_column).value
